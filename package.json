@@ -9,7 +9,7 @@
     "lint": "next lint",
     "push": "git add . && git commit -m 'update' && git push",
     "update":"git add . && git commit -m 'update'",
-    "update2": "set /p Message=message && git add . && echo %Message && git commit -m '%Message%' && echo 'working'"
+    "update2": "set /p Message=message && git add . && echo %Message && git commit -m %Message%"
 
   },
   "dependencies": {
