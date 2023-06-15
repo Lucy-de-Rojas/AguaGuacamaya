@@ -1,0 +1,17 @@
+@import './utils-styles/variables';
+@import './utils-styles/mixins-functions';
+@import './utils-styles/fonts';
+
+
+.button {
+
+        padding: 0px 60px;
+        background-color: $blueLight;
+        color: $blue;
+        @include borderRadius(10px);
+        font-family: topHeader;
+        font-size: 5rem;
+        -webkit-text-stroke: 15px $blue;
+
+
+}
