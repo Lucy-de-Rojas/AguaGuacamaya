@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "push": "git add . && git commit -m 'update' && git push"
+    "push": "git add . && git commit -m 'update' && git push",
+    "update":"git add . && git commit -m 'update'",
+    "update2": "@echo off && set /p Message=message && git add . && git commit -m %Message%"
+
   },
   "dependencies": {
     "@types/node": "20.2.5",
