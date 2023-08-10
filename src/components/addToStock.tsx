@@ -28,7 +28,7 @@ const AddToStock = () => {
 
 
        function handleSave (event:React.SyntheticEvent) {
-                event.preventDefault();
+                // event.preventDefault();
 
                 let name = (document.querySelector('#name') as HTMLInputElement).value;
 
@@ -117,7 +117,7 @@ const AddToStock = () => {
             <input type="number" name="pcsperpack" id="pcsperpack" className={styles.pcsperpack} placeholder='pcs/pack' step='1' required />
 
 
-             <input type="number" name="volume" id="volume" className={styles.volume} placeholder='volume' required step='100'/>
+             <input type="number" name="volume" id="volume" className={styles.volume} placeholder='volume' required step='100' min='100' max='5000'/>
         </div>
 
 
