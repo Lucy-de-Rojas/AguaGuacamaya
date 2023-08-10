@@ -1,16 +1,25 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link';
+
 import {useState, useEffect} from 'react';
+
 
 import styles from '@/styles/Home.module.scss';
 
 
 // components:
+import Header from '@/components/header';
+import AddButton from '@/components/addButton';
+import SortByComponent from '@/components/sortByComp';
+import AddToStock from '@/components/addToStock';
 
 
 
 export default function Home() {
+
+  const [sortBy, setSortBy] = useState('price/item');
+
 
 
 
@@ -26,10 +35,16 @@ export default function Home() {
       </Head>
 
 
-      <h1>AquaQuacamaya</h1>
-      <Link href='/stock'>Stock</Link>
 
+      <Header />
+      <Link href='/'>Home</Link>
 
+      <div className={styles.topBar}>
+      <AddButton />
+      <SortByComponent setSortBy={setSortBy} sortBy={sortBy} />
+      </div>
+
+      <AddToStock />
 
 
 

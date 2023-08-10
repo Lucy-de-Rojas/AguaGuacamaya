@@ -2,16 +2,8 @@
 import styles from '../styles/AddToStock.module.scss';
 import {useState, useEffect} from 'react';
 
-interface outcomeInterface {
-        name:string;
-        pcsPerPack: number;
-        volume: number;
-        still: boolean;
-        stock: number;
-        pricePerPack: number;
-        description: string;
+import { outcomeInterface } from '@/models/add-to-stock';
 
-}
 
 
 
@@ -33,8 +25,10 @@ const AddToStock = () => {
 
         }
 
-        function handleSave (event:React.SyntheticEvent) {
-                // event.preventDefault();
+
+
+       function handleSave (event:React.SyntheticEvent) {
+                event.preventDefault();
 
                 let name = (document.querySelector('#name') as HTMLInputElement).value;
 
@@ -55,6 +49,8 @@ const AddToStock = () => {
                 let description = (document.querySelector('#description') as HTMLInputElement).value;
 
 
+
+
                 // outcome: 🟥
                 let outcome:outcomeInterface = {
                         name:name,
@@ -67,11 +63,33 @@ const AddToStock = () => {
                                 }
 
 
-                console.log(outcome);
+
+
+                console.log('outcome:🟥',outcome);
+
+
+
+                // connecting to back end on save:
+                async function saveToStock(data:outcomeInterface) {
+                        let response = await fetch('/api/add-to-stock',{method:'POST', body:JSON.stringify(data), headers:{
+                                "Content-Type":"application/json",
+                        }});
+                        // let data = await response.json();
+                }
+
+                saveToStock(outcome);
 
 
 
 
+
+
+
+
+
+                // hide the form after save:
+                let addToStock = document.querySelector('.AddToStock_wrapper__aPuPd');
+                (addToStock as HTMLElement).style.left = '-110%';
 
         }
 
@@ -87,7 +105,7 @@ const AddToStock = () => {
         <span className={styles.white}>stock</span>
         </h1>
 
-<form>
+<form onSubmit={handleSave}>
 
         {/* name: */}
         <input type='text' placeholder='Name' id="name" className={styles.name} required />
@@ -136,7 +154,7 @@ const AddToStock = () => {
         {/* cancel / save:: */}
         <div>
         <button onClick={handlecancel} type='reset'>Cancel</button>
-        <input type='submit' onClick={handleSave} value='Save'/>
+        <input type='submit' value='Save'/>
 
         </div>
 
